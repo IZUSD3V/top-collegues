@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { College } from './models';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'top-collegues';
+
+  exCollegue: College = {
+    pseudo: "Image 1",
+    score: 0,
+    photoUrl: "https://picsum.photos/200"
+  }
 }

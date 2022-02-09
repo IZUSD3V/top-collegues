@@ -1,0 +1,14 @@
+<div *ngIf="college">
+  <div class="card" style="width: 18rem;">
+    <img src="https://picsum.photos/200/200" class="card-img-top img-fluid">
+    <div class="card-body">
+      <h3 class="card-title text-center">{{college.pseudo}}</h3>
+      <p class="card-text text-center">{{college.score}}</p>
+      <app-avis (selectionEvt)="selectionEvent($event)"></app-avis>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="afficherErreur" class="alert alert-danger" role="alert">
+  {{msgErreur}}
+</div>
