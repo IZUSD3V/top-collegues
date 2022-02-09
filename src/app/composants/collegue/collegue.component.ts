@@ -38,8 +38,6 @@ export class CollegueComponent implements OnInit {
       }
       this.affichageBtn();
     }
-    
-
   }
   
   affichageBtn(){

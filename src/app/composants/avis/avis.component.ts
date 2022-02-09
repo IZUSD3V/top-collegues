@@ -11,8 +11,7 @@ export class AvisComponent implements OnInit {
   @Output() selectionEvt = new EventEmitter<Avis>();
   @Input() aimerActif:boolean = false;
   @Input() detesteActif:boolean = false;
-  // aimerActif = false;
-  // detesteActif = false;
+  
 
   constructor() { }
 
@@ -27,17 +26,5 @@ export class AvisComponent implements OnInit {
     }
     
   }
-
-  // affichageBtn(btn:string){
-  //   switch (btn) {
-  //     case "DETESTER":
-  //       this.detesteActif = !this.detesteActif;
-  //       break;
-    
-  //     default:
-  //       this.aimerActif = !this.aimerActif;
-  //       break;
-  //   }
-  // }
 
 }
