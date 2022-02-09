@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { College } from 'src/app/models';
 
 @Component({
   selector: 'app-accueil-component',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accueil-component.component.scss']
 })
 export class AccueilComponentComponent implements OnInit {
+
+  @Input() collegues?:College[];
 
   constructor() { }
 
