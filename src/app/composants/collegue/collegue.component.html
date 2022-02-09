@@ -4,7 +4,7 @@
     <div class="card-body">
       <h3 class="card-title text-center">{{college.pseudo}}</h3>
       <p class="card-text text-center">{{college.score}}</p>
-      <app-avis (selectionEvt)="selectionEvent($event)"></app-avis>
+      <app-avis (selectionEvt)="selectionEvent($event)" [aimerActif]="btnAimerDesactiver" [detesteActif]="btnDetesterDesactiver"></app-avis>
     </div>
   </div>
 </div>

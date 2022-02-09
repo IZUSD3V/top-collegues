@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Avis } from 'src/app/models';
 
 @Component({
@@ -9,9 +9,10 @@ import { Avis } from 'src/app/models';
 export class AvisComponent implements OnInit {
 
   @Output() selectionEvt = new EventEmitter<Avis>();
-
-  aimerActif = false;
-  detesteActif = false;
+  @Input() aimerActif:boolean = false;
+  @Input() detesteActif:boolean = false;
+  // aimerActif = false;
+  // detesteActif = false;
 
   constructor() { }
 
@@ -27,16 +28,16 @@ export class AvisComponent implements OnInit {
     
   }
 
-  affichageBtn(btn:string){
-    switch (btn) {
-      case "DETESTER":
-        this.detesteActif = !this.detesteActif;
-        break;
+  // affichageBtn(btn:string){
+  //   switch (btn) {
+  //     case "DETESTER":
+  //       this.detesteActif = !this.detesteActif;
+  //       break;
     
-      default:
-        this.aimerActif = !this.aimerActif;
-        break;
-    }
-  }
+  //     default:
+  //       this.aimerActif = !this.aimerActif;
+  //       break;
+  //   }
+  // }
 
 }

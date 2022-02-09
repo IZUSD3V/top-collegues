@@ -9,6 +9,8 @@ import { Avis, College } from 'src/app/models';
 export class CollegueComponent implements OnInit {
   @Input() college?: College;
   
+  btnAimerDesactiver = false;
+  btnDetesterDesactiver = false;
   afficherErreur = true;
   msgErreur = "";
 
@@ -27,12 +29,14 @@ export class CollegueComponent implements OnInit {
 
 
   selectionEvent(selection:Avis){
+
     if(this.college){
       if(selection==='AIMER'){
         this.college.score += 100;
       }else{
         this.college.score -= 100;
       }
+      this.affichageBtn();
     }
     
 
@@ -42,11 +46,15 @@ export class CollegueComponent implements OnInit {
 
     if(this.college){
       if(this.college.score >= 1000){
-
-      } 
+        this.btnAimerDesactiver = true;
+      } else{
+        this.btnAimerDesactiver = false;
+      }
       
       if(this.college.score <= -1000){
-  
+        this.btnDetesterDesactiver = true;
+      } else{
+        this.btnDetesterDesactiver = false;
       }
     }
   }
