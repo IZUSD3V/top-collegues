@@ -2,3 +2,7 @@
 <div class="d-flex flex-row justify-content-between flex-wrap">
     <app-collegue *ngFor="let collegue of collegues" [college]="collegue"></app-collegue>
 </div> 
+
+<div [hidden]="afficherErr" class="alert alert-danger" role="alert">
+    <p class="text-center mt-2 mb-2">{{msgErr}}</p>
+</div>

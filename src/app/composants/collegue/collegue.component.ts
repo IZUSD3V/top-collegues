@@ -16,12 +16,8 @@ export class CollegueComponent implements OnInit {
   afficherErreur = true;
   msgErreur = "";
 
-  constructor() { 
-
-    
-
-  }
-
+  constructor() {}
+  
   ngOnInit(): void {
     if(!this.college){
       this.msgErreur = "Un collègue est nécessaire...";
@@ -31,33 +27,17 @@ export class CollegueComponent implements OnInit {
     }
   }
 
-
   selectionEvent(selection:Avis){
-
     if(this.college){
-      if(selection==='AIMER'){
-        this.college.score += 100;
-      }else{
-        this.college.score -= 100;
-      }
+      (selection==='AIMER') ? this.college.score += 100 : this.college.score -= 100;
       this.affichageBtn();
     }
   }
   
   affichageBtn(){
-
     if(this.college){
-      if(this.college.score >= 1000){
-        this.btnAimerDesactiver = true;
-      } else{
-        this.btnAimerDesactiver = false;
-      }
-      
-      if(this.college.score <= -1000){
-        this.btnDetesterDesactiver = true;
-      } else{
-        this.btnDetesterDesactiver = false;
-      }
+      this.btnAimerDesactiver = (this.college.score >= 1000) ? true : false;
+      this.btnDetesterDesactiver = (this.college.score <= -1000) ? true : false;
     }
   }
 
