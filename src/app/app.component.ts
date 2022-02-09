@@ -17,7 +17,7 @@ export class AppComponent {
 
   exListeCollegues: College[] = [{
     pseudo: "Image 1",
-    score: 0,
+    score: 1000,
     photoUrl: "https://picsum.photos/id/10/200/200/"
   },{
     pseudo: "Image 2",

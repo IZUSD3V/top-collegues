@@ -1,6 +1,9 @@
 <div class="container">
     <button class="btn btn-outline-warning mb-3">Actualiser</button>
     <app-liste-collegues-component [collegues]="collegues"></app-liste-collegues-component>
+    <div [hidden]="afficherErr" class="alert alert-danger" role="alert">
+        <p class="text-center mt-2 mb-2">{{msgErr}}</p>
+      </div>
 </div>
 
 

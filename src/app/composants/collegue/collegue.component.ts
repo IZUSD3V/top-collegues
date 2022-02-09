@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Avis, College } from 'src/app/models';
+import { ScorePipe } from 'src/app/pipes/score.pipe';
 
 @Component({
   selector: 'app-collegue',
@@ -9,6 +10,7 @@ import { Avis, College } from 'src/app/models';
 export class CollegueComponent implements OnInit {
   @Input() college?: College;
   
+  scorePipe:ScorePipe = new ScorePipe();
   btnAimerDesactiver = false;
   btnDetesterDesactiver = false;
   afficherErreur = true;
@@ -24,6 +26,8 @@ export class CollegueComponent implements OnInit {
     if(!this.college){
       this.msgErreur = "Un collègue est nécessaire...";
       this.afficherErreur = false;
+    }else{
+      this.affichageBtn();
     }
   }
 
