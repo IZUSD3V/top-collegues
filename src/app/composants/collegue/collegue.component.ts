@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Avis, College } from 'src/app/models';
+import { Avis, CollegueWebApi } from 'src/app/models';
 import { ScorePipe } from 'src/app/pipes/score.pipe';
 
 @Component({
@@ -8,7 +8,7 @@ import { ScorePipe } from 'src/app/pipes/score.pipe';
   styleUrls: ['./collegue.component.scss']
 })
 export class CollegueComponent implements OnInit {
-  @Input() college?: College;
+  @Input() college?: CollegueWebApi;
   
   scorePipe:ScorePipe = new ScorePipe();
   btnAimerDesactiver = false;

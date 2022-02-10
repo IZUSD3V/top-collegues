@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { College } from 'src/app/models';
+import { CollegueWebApi } from 'src/app/models';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-liste-collegues-component',
@@ -8,18 +9,24 @@ import { College } from 'src/app/models';
 })
 export class ListeColleguesComponentComponent implements OnInit {
 
-  @Input() collegues?:College[];
+  //@Input() collegues?:Collegue[];
+
+  collegues?: CollegueWebApi[];
 
   msgErr = "";
   afficherErr = true;
   
-  constructor() { }
+  constructor(private dataSrv: DataService) { 
+    dataSrv.listerCollegues().subscribe(liste=>{
+      this.collegues = liste;
+    });
+  }
 
   ngOnInit(): void {
-    if(!this.collegues || this.collegues.length == 0){
-      this.msgErr = "Collègues disponibles...";
-      this.afficherErr = false;
-    }
+    // if(!this.collegues || this.collegues.length == 0){
+    //   this.msgErr = "Collègues indisponibles...";
+    //   this.afficherErr = false;
+    // }
   }
 
 }

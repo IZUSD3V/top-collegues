@@ -1,6 +1,6 @@
 
-<div class="d-flex flex-row justify-content-between flex-wrap">
-    <app-collegue *ngFor="let collegue of collegues" [college]="collegue"></app-collegue>
+<div *ngIf="collegues" class="d-flex flex-row justify-content-between flex-wrap">
+    <app-collegue *ngFor="let col of collegues" [college]="col"></app-collegue>
 </div> 
 
 <div [hidden]="afficherErr" class="alert alert-danger" role="alert">

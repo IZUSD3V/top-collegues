@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { College } from './models';
+import { Collegue } from './models';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,13 @@ import { College } from './models';
 export class AppComponent {
   title = 'top-collegues';
 
-  exCollegue: College = {
+  exCollegue: Collegue = {
     pseudo: "Image 1",
     score: 0,
     photoUrl: "https://picsum.photos/10/200/200"
   }
 
-  exListeCollegues: College[] = [{
+  exListeCollegues: Collegue[] = [{
     pseudo: "Image 1",
     score: 1000,
     photoUrl: "https://picsum.photos/id/10/200/200/"
