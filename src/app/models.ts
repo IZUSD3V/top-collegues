@@ -17,6 +17,12 @@ export interface Vote{
   avis: Avis;
 }
 
+export interface Votes{
+  collegue: CollegueWebApi;
+  avis: Avis;
+  score:number;
+}
+
 export enum Avis {AIMER="AIMER", DETESTER="DETESTER"};
 
 

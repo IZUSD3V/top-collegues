@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CollegueWebApi } from 'src/app/models';
 import { DataService } from 'src/app/services/data.service';
 
@@ -33,5 +34,20 @@ export class ListeColleguesComponentComponent implements OnInit {
       this.afficherErr = false;
     }
   }
+
+  updateScore(){
+    this.dataSrv.listerCollegues().subscribe(liste=>{
+
+      liste.forEach(e=>{
+        if(this.collegues){
+          const c = this.collegues.find(te=>te.pseudo===e.pseudo);
+          if(c) c.score = e.score;
+        }
+      })
+
+    });
+  }
+
+
 
 }

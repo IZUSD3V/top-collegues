@@ -1,0 +1,16 @@
+<div *ngIf="votes">
+    <!-- <h5>Historique des votes</h5> -->
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let vote of votes">
+            <div class="row">
+                <div class="col-3">
+                    <img [src]="vote.collegue.photo" class="img-fluid" alt="photo user">
+                </div>
+                <div class="col-9">                    
+                    <p><strong>{{vote.collegue.pseudo | uppercase}}</strong> est {{vote.avis | lowercase}},<br> son score est de {{vote.score | score}} </p>                    
+                </div>
+                <div class="col-12"><button class="btn btn-outline-danger w-100 mt-2">Supprimer</button></div>
+            </div>
+        </li>
+    </ul>
+</div>
