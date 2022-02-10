@@ -12,6 +12,11 @@ export interface CollegueWebApi{
   photo: string;  
 }
 
+export interface Vote{
+  pseudo: string;
+  avis: Avis;
+}
+
 export enum Avis {AIMER="AIMER", DETESTER="DETESTER"};
 
 

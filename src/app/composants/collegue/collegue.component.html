@@ -1,9 +1,9 @@
-<div *ngIf="college">
+<div *ngIf="collegue">
   <div class="card mb-3" style="width: 22rem;">
-    <img [src]="college.photo" class="card-img-top img-fluid">
+    <img [src]="collegue.photo" class="card-img-top img-fluid">
     <div class="card-body">
-      <h3 class="card-title text-center">{{college.pseudo | uppercase}}</h3>
-      <p class="card-text text-center">{{college.score | score}}</p>
+      <h3 class="card-title text-center">{{collegue.pseudo | uppercase}}</h3>
+      <p class="card-text text-center">{{collegue.score | score}}</p>
       <app-avis (selectionEvt)="selectionEvent($event)" [aimerActif]="btnAimerDesactiver" [detesteActif]="btnDetesterDesactiver"></app-avis>
     </div>
   </div>

@@ -19,14 +19,19 @@ export class ListeColleguesComponentComponent implements OnInit {
   constructor(private dataSrv: DataService) { 
     dataSrv.listerCollegues().subscribe(liste=>{
       this.collegues = liste;
+      this.ctrlContenu();
     });
   }
 
   ngOnInit(): void {
-    // if(!this.collegues || this.collegues.length == 0){
-    //   this.msgErr = "Collègues indisponibles...";
-    //   this.afficherErr = false;
-    // }
+    
+  }
+
+  ctrlContenu(){
+    if(!this.collegues || this.collegues.length == 0){
+      this.msgErr = "Collègues indisponibles...";
+      this.afficherErr = false;
+    }
   }
 
 }
