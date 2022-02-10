@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Query, QueryList, ViewChild } from '@angular/core';
 import { Collegue } from 'src/app/models';
+import { ListeColleguesComponentComponent } from '../liste-collegues-component/liste-collegues-component.component';
 
 @Component({
   selector: 'app-accueil-component',
@@ -8,8 +9,6 @@ import { Collegue } from 'src/app/models';
 })
 export class AccueilComponentComponent implements OnInit {
 
-  @Input() collegues?:Collegue[];
-  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Avis, CollegueWebApi, Vote, Votes } from '../models';
 
 @Injectable({
@@ -8,10 +8,17 @@ import { Avis, CollegueWebApi, Vote, Votes } from '../models';
 })
 export class DataService {
 
+
+  private actualiserScore = new Subject();
+
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
     })
+  }
+
+  get actuScoreObs(){
+    return this.actualiserScore.asObservable();
   }
 
   constructor(private http:HttpClient) { }

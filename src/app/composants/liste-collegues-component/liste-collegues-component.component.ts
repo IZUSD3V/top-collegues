@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { CollegueWebApi } from 'src/app/models';
 import { DataService } from 'src/app/services/data.service';
 
@@ -10,8 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ListeColleguesComponentComponent implements OnInit {
 
-  //@Input() collegues?:Collegue[];
-
   collegues?: CollegueWebApi[];
 
   msgErr = "";
@@ -21,11 +19,14 @@ export class ListeColleguesComponentComponent implements OnInit {
     dataSrv.listerCollegues().subscribe(liste=>{
       this.collegues = liste;
       this.ctrlContenu();
-    });
+    }); 
   }
 
   ngOnInit(): void {
-    
+    let btnActualiser = document.querySelector("#btn-actualiser");
+    if(btnActualiser) fromEvent(btnActualiser, 'click').subscribe(e=>{
+      this.updateScore();
+    });
   }
 
   ctrlContenu(){
@@ -37,13 +38,14 @@ export class ListeColleguesComponentComponent implements OnInit {
 
   updateScore(){
     this.dataSrv.listerCollegues().subscribe(liste=>{
-
       liste.forEach(e=>{
         if(this.collegues){
           const c = this.collegues.find(te=>te.pseudo===e.pseudo);
-          if(c) c.score = e.score;
-        }
-      })
+          if(c && c.score != e.score) c.score = e.score;
+        }        
+      })  
+
+      alert('Mise à jour des scores éffectuée !');   
 
     });
   }
