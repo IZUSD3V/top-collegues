@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HistoriqueVotesComponent } from './composants/historique-votes/historique-votes.component';
 import { FormsModule } from '@angular/forms';
 import { NouveauCollegueTemplateFormComponent } from './composants/nouveau-collegue-template-form/nouveau-collegue-template-form.component';
+import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
+import { NomPrenomValidatorDirective } from './validators/nom-prenom-validator.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { NouveauCollegueTemplateFormComponent } from './composants/nouveau-colle
     AccueilComponentComponent,
     ScorePipe,
     HistoriqueVotesComponent,
-    NouveauCollegueTemplateFormComponent
+    NouveauCollegueTemplateFormComponent,
+    PseudoValidatorDirective,
+    NomPrenomValidatorDirective
   ],
   imports: [
     BrowserModule,

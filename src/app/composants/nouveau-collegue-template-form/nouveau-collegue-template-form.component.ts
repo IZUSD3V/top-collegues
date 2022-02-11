@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CollegueWebApi } from 'src/app/models';
 import { DataService } from 'src/app/services/data.service';
 
@@ -17,9 +18,10 @@ export class NouveauCollegueTemplateFormComponent implements OnInit {
   }
 
 
-  valider(){
+  valider(form: NgForm){
     this.dataSrv.creationCollegue(this.collegue).subscribe(col=>{
-      this.collegue = {};
+      form.reset();
+      this.dataSrv.actualiser();
     })   
   }
 }

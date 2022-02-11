@@ -1,5 +1,5 @@
 
-<form class="container pt-5 pb-5" #etatForm="ngForm" style="background-color: rgba(255, 255, 255,.4);">
+<form appNomPrenomValidator #formulaire="ngForm" (ngSubmit)="valider(formulaire)" class="container pt-5 pb-5" style="background-color: rgba(255, 255, 255,.4);">
     <div class="form-floating mb-3">
         <input [(ngModel)]="collegue.pseudo" #pseudo="ngModel" type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Saisir ici le pseudo..." autofocus required minlength="2">
         <label for="pseudo">Pseudo *</label>
@@ -16,13 +16,14 @@
     </div>
     <p *ngIf="prenom.dirty && prenom.invalid" class="text-danger">Le prénom est invalide (obligatoire et supérieur à 2 caractères)</p>
     <div class="form-floating mb-3">
-        <input [(ngModel)]="collegue.photo" type="text" class="form-control" id="photo" name="photo" placeholder="Saisir ici l'url de la photo..." required>
+        <input [(ngModel)]="collegue.photo" #photo="ngModel" type="text" class="form-control" id="photo" name="photo" placeholder="Saisir ici l'url de la photo..." required pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?">
         <label for="photo">Photo (URL) *</label>
     </div>
+    <p *ngIf="photo.dirty && photo.invalid" class="text-danger">L'image est invalide (obligatoire et doit être une url)</p>
     <small class="d-block mt-2 mb-2">*: champs obligatoires.</small>
     <div class="d-flex justify-content-between">
         <button class="btn btn-outline-danger" type="reset">Annuler</button>
-        <button class="btn btn-outline-success" type="submit" [disabled]="etatForm.invalid" (click)="valider()">Valider</button>
+        <button class="btn btn-outline-success" type="submit" [disabled]="formulaire.invalid">Valider</button>
     </div>
     
 </form>
