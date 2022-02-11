@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Query, QueryList, ViewChild } from '@angular/core';
-import { Collegue } from 'src/app/models';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { HistoriqueVotesComponent } from '../historique-votes/historique-votes.component';
 import { ListeColleguesComponentComponent } from '../liste-collegues-component/liste-collegues-component.component';
 
 @Component({
@@ -9,10 +10,22 @@ import { ListeColleguesComponentComponent } from '../liste-collegues-component/l
 })
 export class AccueilComponentComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(ListeColleguesComponentComponent)
+  CListeCollegues?: ListeColleguesComponentComponent;
+
+  @ViewChild(HistoriqueVotesComponent)
+  CHistoriqueVotes?: HistoriqueVotesComponent;
+
+  constructor(private dataSrv: DataService) {}
 
   ngOnInit(): void {
     
+  }
+
+  actualiser(){
+    // this.CListeCollegues?.updateScore();
+    // this.CHistoriqueVotes?.chargeDonnees();
+    this.dataSrv.actualiser();
   }
 
 }

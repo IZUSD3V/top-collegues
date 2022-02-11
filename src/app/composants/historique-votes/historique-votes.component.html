@@ -1,7 +1,13 @@
-<div *ngIf="votes">
-    <!-- <h5>Historique des votes</h5> -->
+<ng-container *ngIf="votes | async as tabVotes; else votesAbsent">
+
+    <div *ngIf="tabVotes.length === 0">
+        <div class="alert alert-danger" role="alert">
+            Aucune donnée !
+        </div>
+    </div>
+
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let vote of votes">
+        <li class="list-group-item" *ngFor="let vote of tabVotes">
             <div class="row">
                 <div class="col-3">
                     <img [src]="vote.collegue.photo" class="img-fluid" alt="photo user">
@@ -13,4 +19,12 @@
             </div>
         </li>
     </ul>
-</div>
+    
+    </ng-container>
+    
+    <ng-template #votesAbsent>
+    <div class="alert alert-info" role="alert">
+        Chargement en cours...
+    </div>
+    </ng-template>
+

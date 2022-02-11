@@ -1,8 +1,18 @@
 
-<div *ngIf="collegues" class="d-flex flex-row justify-content-between flex-wrap">
-    <app-collegue *ngFor="let col of collegues" [collegue]="col"></app-collegue>
-</div> 
+<ng-container *ngIf="collegues | async as tabCols; else colAbsent">
 
-<div [hidden]="afficherErr" class="alert alert-danger" role="alert">
-    <p class="text-center mt-2 mb-2">{{msgErr}}</p>
+<div *ngIf="tabCols.length === 0">
+    <div class="alert alert-danger" role="alert">
+        Aucune donnée !
+    </div>
 </div>
+
+<app-collegue *ngFor="let col of tabCols" [collegue]="col"></app-collegue>
+</ng-container>
+
+<ng-template #colAbsent>
+<div class="alert alert-info" role="alert">
+    Chargement en cours...
+</div>
+</ng-template>
+

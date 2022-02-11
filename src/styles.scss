@@ -10,3 +10,14 @@ body{
     height: 100vh;
     background: transparent;    
 }
+input{
+    outline: none;
+}
+
+input.gn-dirty.ng-invalid{
+    border: 2px solid red;
+}
+
+input.gn-dirty.ng-valid{
+    border: 2px solid greenyellow;
+}

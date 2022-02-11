@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Avis, CollegueWebApi, Vote, Votes } from '../models';
+import { Avis, Collegue, CollegueWebApi, Vote, Votes } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +9,54 @@ import { Avis, CollegueWebApi, Vote, Votes } from '../models';
 export class DataService {
 
 
-  private actualiserScore = new Subject();
-
+  private obsCollegues = new Subject<CollegueWebApi[]>();
+  private obsVotes = new Subject<Votes[]>();
+  
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
     })
   }
 
-  get actuScoreObs(){
-    return this.actualiserScore.asObservable();
+  constructor(private http:HttpClient) { }
+
+
+  fluxCollegues(): Observable<CollegueWebApi[]> {
+    return this.obsCollegues.asObservable();
   }
 
-  constructor(private http:HttpClient) { }
+  fluxVotes(): Observable<Votes[]>{
+    return this.obsVotes.asObservable();
+  }
+
 
   listerCollegues(): Observable<CollegueWebApi[]>{
     return this.http.get<CollegueWebApi[]>('https://formation-angular-collegues.herokuapp.com/api/v1/collegues');
   }
 
+  creationCollegue(collegue:Partial<CollegueWebApi>) : Observable<CollegueWebApi>{
+    return this.http.post<CollegueWebApi>('https://formation-angular-collegues.herokuapp.com/api/v1/collegues',collegue);
+  }
+
   donnerAvis(collegue:CollegueWebApi, avis: Avis) : Observable<CollegueWebApi>{
-    const vote:Vote = {
+    return this.http.post<CollegueWebApi>('https://formation-angular-collegues.herokuapp.com/api/v1/votes',{
       pseudo: collegue.pseudo,
       avis: avis
-    }
-    return this.http.post<CollegueWebApi>('https://formation-angular-collegues.herokuapp.com/api/v1/votes',vote);
+    });
   }
 
   listerVotes(): Observable<Votes[]>{
     return this.http.get<Votes[]>('https://formation-angular-collegues.herokuapp.com/api/v1/votes');
+  }
+
+  actualiser(){
+    this.listerCollegues().subscribe(collegues=>{
+      this.obsCollegues.next(collegues);
+    }) 
+
+    this.listerVotes().subscribe(votes=>{
+      this.obsVotes.next(votes);
+    })
   }
 
 }

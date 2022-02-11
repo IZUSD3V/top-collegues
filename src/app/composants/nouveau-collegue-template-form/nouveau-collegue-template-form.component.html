@@ -1,0 +1,28 @@
+
+<form class="container pt-5 pb-5" #etatForm="ngForm" style="background-color: rgba(255, 255, 255,.4);">
+    <div class="form-floating mb-3">
+        <input [(ngModel)]="collegue.pseudo" #pseudo="ngModel" type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Saisir ici le pseudo..." autofocus required minlength="2">
+        <label for="pseudo">Pseudo *</label>
+    </div>
+    <p *ngIf="pseudo.dirty && pseudo.invalid" class="text-danger">Le pseudo est invalide (obligatoire et supérieur à 2 caractères)</p>
+    <div class="form-floating mb-3">
+        <input [(ngModel)]="collegue.nom" #nom="ngModel" type="text" class="form-control" id="nom" name="nom" placeholder="Saisir ici le nom..." required minlength="2">
+        <label for="nom">Nom *</label>
+    </div>
+    <p *ngIf="nom.dirty && nom.invalid" class="text-danger">Le nom est invalide (obligatoire et supérieur à 2 caractères)</p>
+    <div class="form-floating mb-3">
+        <input [(ngModel)]="collegue.prenom" #prenom="ngModel" type="text" class="form-control" id="prenom" name="prenom" placeholder="Saisir ici le prénom..." required minlength="2">
+        <label for="prenom">Prénom *</label>
+    </div>
+    <p *ngIf="prenom.dirty && prenom.invalid" class="text-danger">Le prénom est invalide (obligatoire et supérieur à 2 caractères)</p>
+    <div class="form-floating mb-3">
+        <input [(ngModel)]="collegue.photo" type="text" class="form-control" id="photo" name="photo" placeholder="Saisir ici l'url de la photo..." required>
+        <label for="photo">Photo (URL) *</label>
+    </div>
+    <small class="d-block mt-2 mb-2">*: champs obligatoires.</small>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-danger" type="reset">Annuler</button>
+        <button class="btn btn-outline-success" type="submit" [disabled]="etatForm.invalid" (click)="valider()">Valider</button>
+    </div>
+    
+</form>
