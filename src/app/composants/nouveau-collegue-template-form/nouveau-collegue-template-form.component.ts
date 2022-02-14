@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CollegueWebApi } from 'src/app/models';
 import { DataService } from 'src/app/services/data.service';
 
@@ -12,7 +13,7 @@ export class NouveauCollegueTemplateFormComponent implements OnInit {
 
   collegue: Partial<CollegueWebApi> = {};
   
-  constructor(private dataSrv:DataService) { }
+  constructor(private dataSrv:DataService, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -21,8 +22,7 @@ export class NouveauCollegueTemplateFormComponent implements OnInit {
   valider(form: NgForm){
     this.dataSrv.creationCollegue(this.collegue).subscribe({
       next: col=>{
-        form.reset();
-        this.dataSrv.actualiser();
+        this.router.navigate(['/accueil'])
       },
       error: (err)=>{
         console.log(err);

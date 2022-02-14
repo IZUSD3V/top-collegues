@@ -1,0 +1,15 @@
+<ng-container *ngIf="collegue;else colAbsent">
+    <div class="card" style="width: 18rem;margin: 2rem auto;">
+        <img [src]="collegue.photo" class="card-img-top img-fluid">
+        <div class="card-body">
+          <h3 class="card-title text-center">{{collegue.pseudo | uppercase}}</h3>
+          <p class="card-text text-center">Score : {{collegue.score | score}}</p>
+          <p class="card-text text-center">{{collegue.prenom}} {{collegue.nom | uppercase}}</p>     
+        </div>
+      </div>
+</ng-container>
+<ng-template #colAbsent>
+  <div class="alert alert-danger" role="alert">
+      Aucun collègue sélectionné...
+  </div>
+  </ng-template>

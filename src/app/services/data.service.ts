@@ -29,6 +29,9 @@ export class DataService {
     return this.obsVotes.asObservable();
   }
 
+  detailCollegue(pseudo:string): Observable<CollegueWebApi>{
+    return this.http.get<CollegueWebApi>('https://formation-angular-collegues.herokuapp.com/api/v1/collegues/'+pseudo+'/');
+  }
 
   listerCollegues(): Observable<CollegueWebApi[]>{
     return this.http.get<CollegueWebApi[]>('https://formation-angular-collegues.herokuapp.com/api/v1/collegues');

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Avis, CollegueWebApi } from 'src/app/models';
 import { ScorePipe } from 'src/app/pipes/score.pipe';
 import { DataService } from 'src/app/services/data.service';
@@ -17,7 +18,7 @@ export class CollegueComponent implements OnInit {
   afficherErreur = true;
   msgErreur = "";
 
-  constructor(private dataSrv: DataService) {}
+  constructor(private dataSrv: DataService, private router: Router) {}
   
   ngOnInit(): void {
     if(!this.collegue){
@@ -46,6 +47,10 @@ export class CollegueComponent implements OnInit {
       this.btnAimerDesactiver = (this.collegue.score >= 1000) ? true : false;
       this.btnDetesterDesactiver = (this.collegue.score <= -1000) ? true : false;
     }
+  }
+
+  afficherDetail(pseudo:string){
+    this.router.navigate(['/detail/',{pseudo:pseudo}]);
   }
 
 }

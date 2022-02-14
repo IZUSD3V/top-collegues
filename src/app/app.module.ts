@@ -15,6 +15,7 @@ import { PseudoValidatorDirective } from './validators/pseudo-validator.directiv
 import { NomPrenomValidatorDirective } from './validators/nom-prenom-validator.directive';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
+import { FicheCollegueComponent } from './composants/fiche-collegue/fiche-collegue.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { ROUTES } from './app.routes';
     HistoriqueVotesComponent,
     NouveauCollegueTemplateFormComponent,
     PseudoValidatorDirective,
-    NomPrenomValidatorDirective
+    NomPrenomValidatorDirective,
+    FicheCollegueComponent
   ],
   imports: [
     BrowserModule,
