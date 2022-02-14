@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { NouveauCollegueTemplateFormComponent } from './composants/nouveau-collegue-template-form/nouveau-collegue-template-form.component';
 import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
 import { NomPrenomValidatorDirective } from './validators/nom-prenom-validator.directive';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { NomPrenomValidatorDirective } from './validators/nom-prenom-validator.d
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

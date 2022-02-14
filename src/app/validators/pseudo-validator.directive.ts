@@ -1,6 +1,8 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, AsyncValidator, NG_ASYNC_VALIDATORS, ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
+import {  map } from 'rxjs/operators';
+import { DataService } from '../services/data.service';
 
 @Directive({
   selector: '[appPseudoValidator]',
@@ -8,10 +10,16 @@ import { Observable } from 'rxjs';
 })
 export class PseudoValidatorDirective implements AsyncValidator {
 
-  constructor() { }
+  constructor(private dataSrv: DataService) { }
 
   validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    throw new Error('Method not implemented.');
+
+    return this.dataSrv.listerCollegues().pipe(
+      map(t=>t.map(c=>c.pseudo)),
+      map(s=>s.includes(control.value)),
+      map(b=> b ? {pseudoExist: true} : null),
+    );
+
   }
 
 }

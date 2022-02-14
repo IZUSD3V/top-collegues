@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {  NgForm } from '@angular/forms';
 import { CollegueWebApi } from 'src/app/models';
 import { DataService } from 'src/app/services/data.service';
 
@@ -11,17 +11,24 @@ import { DataService } from 'src/app/services/data.service';
 export class NouveauCollegueTemplateFormComponent implements OnInit {
 
   collegue: Partial<CollegueWebApi> = {};
-
+  
   constructor(private dataSrv:DataService) { }
 
   ngOnInit(): void {
+    
   }
 
-
   valider(form: NgForm){
-    this.dataSrv.creationCollegue(this.collegue).subscribe(col=>{
-      form.reset();
-      this.dataSrv.actualiser();
+    this.dataSrv.creationCollegue(this.collegue).subscribe({
+      next: col=>{
+        form.reset();
+        this.dataSrv.actualiser();
+      },
+      error: (err)=>{
+        console.log(err);
+        
+        alert('Une erreur est survenue lors de l\'enregistrement du collègue...');
+      }
     })   
   }
 }
